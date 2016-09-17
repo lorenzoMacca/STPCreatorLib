@@ -42,6 +42,7 @@ void SettingData::loadConfigFile()
     if(!this->m_file_listed_name.exists() || !this->m_file_listed_name.isFile())
     {
         qDebug() << this->m_file_listed_name.absoluteFilePath() << "not found";
+        this->m_components = this->getComponentListFromDefaultList();
         //TODO inserire un signal
         return;
     }
@@ -49,6 +50,7 @@ void SettingData::loadConfigFile()
     if(!xmlFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         qDebug() << this->m_file_listed_name.absoluteFilePath() << "not found";
+        this->m_components = this->getComponentListFromDefaultList();
         //TODO inserire un signal
         return;
     }
@@ -56,11 +58,12 @@ void SettingData::loadConfigFile()
     {
         qDebug() << this->m_file_listed_name.absoluteFilePath() << "is not an xml or it is corrupted";
         xmlFile.close();
+        this->m_components = this->getComponentListFromDefaultList();
         //TODO inserire un signal
         return;
     }
     xmlFile.close();
-    this->m_components = this->getComponentListFromDefaultList();
+    this->m_components = this->getComponentListFromXmlFile();
 }
 
 QList<ComponentSoftware> SettingData::getComponentListFromDefaultList()
@@ -68,6 +71,28 @@ QList<ComponentSoftware> SettingData::getComponentListFromDefaultList()
     QList<ComponentSoftware>components;
     ComponentSoftware amfm(QString("AMFM"), QString("061.000.000"), QString(""), this);
     components<<amfm;
+    return components;
+}
+
+QList<ComponentSoftware> SettingData::getComponentListFromXmlFile()
+{
+    QList<ComponentSoftware>components;
+    QDomNode node = this->m_config_file.documentElement();
+    while(!node.isNull())
+    {
+        if(node.isElement())
+        {
+            QDomElement element = node.toElement();
+            qDebug() << "Element " << element.tagName();
+            qDebug() << "attribute name " << element.attribute("name", "not set");
+        }
+        if(node.isText())
+        {
+            QDomText text = node.toText();
+            qDebug() << text.data();
+        }
+        node.nextSibling();
+    }
     return components;
 }
 

@@ -36,6 +36,7 @@ private:
 
     void loadConfigFile();
     QList<ComponentSoftware> getComponentListFromDefaultList();
+    QList<ComponentSoftware> getComponentListFromXmlFile();
 
 signals:
 
