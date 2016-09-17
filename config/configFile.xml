@@ -1,0 +1,9 @@
+<document name="configFile.xml">
+    <author name="extern.lorenzo" />
+    <components>
+        <component name="AMFM"  versione="060.001.000" description="" />
+        <component name="AUDIO" versione="061.001.000" description="" />
+        <component name="DAB"   versione="062.001.000" description="" />
+        <component name="DRM"   versione="063.001.000" description="" />
+    </components>
+</document>

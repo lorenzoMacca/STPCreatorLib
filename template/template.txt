@@ -1,0 +1,23 @@
+#ifndef QCLASSNAME_H
+#define QCLASSNAME_H
+
+#include <QObject>
+#include <QString>
+
+class QClassName : public QObject{
+    
+    Q_OBJECT
+    
+public:
+    Quser(QObject *parent);
+
+public slots:
+
+private:
+    QString m_text;
+    
+signals:
+
+};
+
+#endif
