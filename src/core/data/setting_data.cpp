@@ -7,7 +7,7 @@ SettingData::SettingData(QObject *parent):QObject(parent)
     this->m_create_stp_jira_name=QFileInfo("jiraScriptPerl/starter.cmd");
     this->m_sp_input_file_name=QFileInfo("configFile/STPs.csv");
     this->m_sp_input_file_destination=QDir("jiraScriptPerl");
-    this->m_file_listed_name=QFileInfo("conf/components.xml");
+    this->m_file_listed_name=QFileInfo("config/configFile.xml");
     this->loadConfigFile();
     qDebug() << "Setting data instance inizialized";
 }
@@ -77,7 +77,8 @@ QList<ComponentSoftware> SettingData::getComponentListFromDefaultList()
 QList<ComponentSoftware> SettingData::getComponentListFromXmlFile()
 {
     QList<ComponentSoftware>components;
-    QDomNode node = this->m_config_file.documentElement();
+    QDomElement documentElement = this->m_config_file.documentElement();
+    QDomNode node = documentElement.firstChild();
     while(!node.isNull())
     {
         if(node.isElement())
@@ -85,13 +86,24 @@ QList<ComponentSoftware> SettingData::getComponentListFromXmlFile()
             QDomElement element = node.toElement();
             qDebug() << "Element " << element.tagName();
             qDebug() << "attribute name " << element.attribute("name", "not set");
+            if(element.attribute("name", "not set").compare(QString("configFile")))
+            {
+                qDebug() << "Hallo";
+                QDomNode node1 = element.firstChild();
+                if(node1.isElement())
+                {
+                    QDomElement element1 = node1.toElement();
+                    qDebug() << "Element " << element1.tagName();
+                    qDebug() << "attribute name " << element1.attribute("name", "not set");
+                }
+            }
         }
         if(node.isText())
         {
             QDomText text = node.toText();
             qDebug() << text.data();
         }
-        node.nextSibling();
+        node = node.nextSibling();
     }
     return components;
 }

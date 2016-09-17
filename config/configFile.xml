@@ -1,4 +1,4 @@
-<document name="configFile.xml">
+<document name="configFile">
     <author name="extern.lorenzo" />
     <components>
         <component name="AMFM"  versione="060.001.000" description="" />
