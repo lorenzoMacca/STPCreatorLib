@@ -67,6 +67,7 @@ QList<ComponentSoftware> SettingData::getComponentListFromDefaultList()
 {
     QList<ComponentSoftware>components;
     ComponentSoftware amfm(QString("AMFM"), QString("061.000.000"), QString(""), this);
+    components<<amfm;
     return components;
 }
 

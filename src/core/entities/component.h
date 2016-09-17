@@ -10,6 +10,8 @@ class ComponentSoftware : public QObject{
 
 public:
     ComponentSoftware(QString name, QString version, QString description, QObject *parent);
+    ComponentSoftware(const ComponentSoftware &other);
+    ComponentSoftware &operator =(const ComponentSoftware &other);
 
 public slots:
 
