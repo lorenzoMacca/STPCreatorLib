@@ -8,8 +8,10 @@
 #include <QFile>
 #include <QList>
 #include <QDebug>
+#include <QStringList>
 #include <QDomDocument>
 #include "../entities/component.h"
+#include "../entities/integration_plan.h"
 
 class SettingData : public QObject{
 
@@ -23,6 +25,12 @@ public:
     const QDir& sp_input_file_destination()const;
     const QFileInfo& file_listed_name()const;
     const QList<ComponentSoftware>& getComponentsSoftware()const;
+    const QString& cw()const;
+    const QStringList& securityLevels()const;
+    const QStringList& assignees()const;
+    const QStringList& pics()const;
+    const QStringList& subProjects()const;
+    const QStringList& stp_types()const;
 
 public slots:
 
@@ -34,10 +42,20 @@ private:
     QFileInfo m_file_listed_name;
     QDomDocument m_config_file;
     QList<ComponentSoftware> m_components;
+    QString m_cw;
+    QStringList m_securityLevels;
+    QStringList m_assignees;
+    QStringList m_pics;
+    QStringList m_subProjects;
+    QStringList m_stp_types;
 
     void loadConfigFile();
     QList<ComponentSoftware> getComponentListFromDefaultList();
-    QList<ComponentSoftware> getComponentListFromXmlFile();
+    void getInfoFromXmlConfigFile();
+    QStringList getSecurityLevelsByDefault();
+    QStringList getAssigneeByDefault();
+    QStringList getPicsByDefault();
+    QStringList getSubProjectsByDefault();
 
 signals:
 

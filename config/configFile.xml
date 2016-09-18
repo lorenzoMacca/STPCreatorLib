@@ -1,9 +1,32 @@
 <document name="configFile">
     <author name="extern.lorenzo" />
     <components name="components">
-        <component name="AMFM"  versione="060.001.000" description="" />
-        <component name="AUDIO" versione="061.001.000" description="" />
-        <component name="DAB"   versione="062.001.000" description="" />
-        <component name="DRM"   versione="063.001.000" description="" />
+        <component name="AMFM"  version="060.001.000" description="" />
+        <component name="AUDIO" version="061.001.000" description="" />
+        <component name="DAB"   version="062.001.000" description="" />
+        <component name="DRM"   version="063.001.000" description="" />
     </components>
+    <cw name="cw" cw="40_41" />
+    <securityLevels name="securityLevels">
+        <level name="gl005_onsite" />
+        <level name="gl005_jasmin" />
+        <level name="gl005_Toyota" />
+    </securityLevels>
+    <assignees name="assignees">
+        <assignee name="Cozza"/>
+        <assignee name="Laghigna"/>
+        <assignee name="Rizzo"/>
+    </assignees>
+    <pics name="pics">
+        <pics name="Cozza"/>
+        <pics name="Laghigna"/>
+        <pics name="Rizzo"/>
+    </pics>
+    <subProjects name="subProjects">
+        <subProject name="HO16RT" />
+        <subProject name="HON02" />
+        <subProject name="HON03" />
+        <subProject name="FOD01" />
+        <subProject name="FOD03" />
+    </subProjects>
 </document>

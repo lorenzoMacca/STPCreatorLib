@@ -16,14 +16,16 @@ SOURCES += \
     src/user/user.cpp \
     src/core/data/data.cpp \
     src/core/data/setting_data.cpp \
-    src/core/entities/component.cpp
+    src/core/entities/component.cpp \
+    src/core/entities/integration_plan.cpp
 
 HEADERS += \
     inc/traininglib.h \
     src/user/user.h \
     src/core/data/data.h \
     src/core/data/setting_data.h \
-    src/core/entities/component.h
+    src/core/entities/component.h \
+    src/core/entities/integration_plan.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
