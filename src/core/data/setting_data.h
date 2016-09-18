@@ -22,6 +22,7 @@ public:
     const QFileInfo& sp_input_file_name()const;
     const QDir& sp_input_file_destination()const;
     const QFileInfo& file_listed_name()const;
+    const QList<ComponentSoftware>& getComponentsSoftware()const;
 
 public slots:
 

@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += gui xml
+QT       += xml
+QT       -= gui
 
 TARGET = STPCreatorLib
 TEMPLATE = lib

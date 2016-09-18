@@ -70,7 +70,31 @@ QList<ComponentSoftware> SettingData::getComponentListFromDefaultList()
 {
     QList<ComponentSoftware>components;
     ComponentSoftware amfm(QString("AMFM"), QString("061.000.000"), QString(""), this);
+    ComponentSoftware hd(QString("HDRADIO"), QString("061.000.000"), QString(""), this);
+    ComponentSoftware dab(QString("DAB"), QString("061.000.000"), QString(""), this);
+    ComponentSoftware drm(QString("DRM"), QString("061.000.000"), QString(""), this);
+    ComponentSoftware sdars(QString("SDARS"), QString("061.000.000"), QString(""), this);
+    ComponentSoftware tunutil(QString("TUNUTIL"), QString("061.000.000"), QString(""), this);
+    ComponentSoftware cpf(QString("CPF"), QString("061.000.000"), QString(""), this);
+    ComponentSoftware audio(QString("AUDIO"), QString("061.000.000"), QString(""), this);
+    ComponentSoftware gra_amfmhd(QString("GRA_AMFMHD"), QString("061.000.000"), QString(""), this);
+    ComponentSoftware gra_dab(QString("GRA_DAB"), QString("061.000.000"), QString(""), this);
+    ComponentSoftware gra_sdars(QString("GRA_SDARS"), QString("061.000.000"), QString(""), this);
+    ComponentSoftware gra_if(QString("GRA_IF"), QString("061.000.000"), QString(""), this);
+    ComponentSoftware gra_mstr(QString("GRA_MSTR"), QString("061.000.000"), QString(""), this);
     components<<amfm;
+    components<<hd;
+    components<<dab;
+    components<<drm;
+    components<<sdars;
+    components<<tunutil;
+    components<<cpf;
+    components<<audio;
+    components<<gra_amfmhd;
+    components<<gra_dab;
+    components<<gra_if;
+    components<<gra_mstr;
+    components<<gra_sdars;
     return components;
 }
 
@@ -85,16 +109,22 @@ QList<ComponentSoftware> SettingData::getComponentListFromXmlFile()
         {
             QDomElement element = node.toElement();
             qDebug() << "Element " << element.tagName();
-            qDebug() << "attribute name " << element.attribute("name", "not set");
-            if(element.attribute("name", "not set").compare(QString("configFile")))
-            {
-                qDebug() << "Hallo";
-                QDomNode node1 = element.firstChild();
-                if(node1.isElement())
+            QString attributeName = element.attribute("name", "not set");
+            qDebug() << "attribute name " << attributeName;
+            if(attributeName == "components"){
+                QDomNode nodeComponents = element.firstChild();
+                while(!nodeComponents.isNull())
                 {
-                    QDomElement element1 = node1.toElement();
-                    qDebug() << "Element " << element1.tagName();
-                    qDebug() << "attribute name " << element1.attribute("name", "not set");
+                    if(nodeComponents.isElement())
+                    {
+                        QDomElement elementComponent = nodeComponents.toElement();
+                        QString attributeNameComponent = elementComponent.attribute("name", "not set");
+                        QString attributeVersionComponent = elementComponent.attribute("version", "not set");
+                        QString attributeDescriptionComponent = elementComponent.attribute("description", "not set");
+                        qDebug() << attributeNameComponent << " " << attributeVersionComponent;
+                        components.append(ComponentSoftware(attributeNameComponent, attributeVersionComponent, attributeDescriptionComponent, this));
+                    }
+                    nodeComponents = nodeComponents.nextSibling();
                 }
             }
         }
@@ -106,6 +136,11 @@ QList<ComponentSoftware> SettingData::getComponentListFromXmlFile()
         node = node.nextSibling();
     }
     return components;
+}
+
+const QList<ComponentSoftware>& SettingData::getComponentsSoftware()const
+{
+    return this->m_components;
 }
 
 
