@@ -15,6 +15,10 @@ public:
     const QString& name()const;
     const QString& version()const;
     const QString& description()const;
+    void setName(QString name);
+    void setVersion(QString version);
+    void setDescription(QString description);
+    const QString toString()const;
 
 public slots:
 

@@ -36,3 +36,23 @@ ComponentSoftware& ComponentSoftware::operator=(const ComponentSoftware &other)
     this->m_description = other.description();
     return *this;
 }
+
+void ComponentSoftware::setName(QString name)
+{
+    this->m_name = name;
+}
+
+void ComponentSoftware::setVersion(QString version)
+{
+    this->m_version = version;
+}
+
+void ComponentSoftware::setDescription(QString description)
+{
+    this->m_description = description;
+}
+
+const QString ComponentSoftware::toString()const
+{
+    return "ComponentSoftware[" + this->name() + " - " + this->version() + " - " + this->description() + "]";
+}
