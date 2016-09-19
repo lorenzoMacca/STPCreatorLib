@@ -2,7 +2,7 @@
 #define TRAININGLIB_H
 
 #include <QCoreApplication>
-#include <QDebugStateSaver>
+#include <QDebug>
 
 class TrainingLib
 {
