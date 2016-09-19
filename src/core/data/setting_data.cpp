@@ -49,7 +49,7 @@ void SettingData::loadConfigFile()
         this->m_assignees = this->getAssigneeByDefault();
         this->m_pics = this->getPicsByDefault();
         this->m_subProjects = this->getSubProjectsByDefault();
-        //TODO inserire un signal
+        emit errorCinfigFile("Config file not exists");
         return;
     }
     QFile xmlFile(this->m_file_listed_name.absoluteFilePath());
@@ -61,7 +61,7 @@ void SettingData::loadConfigFile()
         this->m_assignees = this->getAssigneeByDefault();
         this->m_pics = this->getPicsByDefault();
         this->m_subProjects = this->getSubProjectsByDefault();
-        //TODO inserire un signal
+        emit errorCinfigFile("Config file cannot be opened");
         return;
     }
     if(!this->m_config_file.setContent(&xmlFile))
@@ -73,7 +73,7 @@ void SettingData::loadConfigFile()
         this->m_assignees = this->getAssigneeByDefault();
         this->m_pics = this->getPicsByDefault();
         this->m_subProjects = this->getSubProjectsByDefault();
-        //TODO inserire un signal
+        emit errorCinfigFile("Config file corrupted, it cannot be parsed");
         return;
     }
     xmlFile.close();

@@ -58,6 +58,7 @@ private:
     QStringList getSubProjectsByDefault();
 
 signals:
+    void errorCinfigFile(QString message);
 
 };
 
