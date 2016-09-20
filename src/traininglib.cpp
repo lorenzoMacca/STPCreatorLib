@@ -1,4 +1,4 @@
-#include "..\inc\traininglib.h"
+#include "../inc/traininglib.h"
 
 
 TrainingLib::TrainingLib()
