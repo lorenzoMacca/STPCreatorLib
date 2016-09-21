@@ -5,6 +5,7 @@
 #include <QString>
 #include <QDate>
 #include <QList>
+#include <QChar>
 #include <QListIterator>
 #include "build.h"
 
@@ -53,7 +54,6 @@ public:
     int numBuils()const;
     //todo
     const QString toString();
-    const QString getDateDDMMYYYY(QDate date);
     const QDate getRealStartDate(); /*giono della prima attività*/
     const QDate getRealDueDate();   /*giorno dell'ultima attività*/
     bool checkIntegrationPlan();

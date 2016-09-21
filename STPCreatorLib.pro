@@ -18,7 +18,8 @@ SOURCES += \
     src/core/data/setting_data.cpp \
     src/core/entities/component.cpp \
     src/core/entities/integration_plan.cpp \
-    src/core/entities/build.cpp
+    src/core/entities/build.cpp \
+    src/core/util/util.cpp
 
 HEADERS += \
     inc/traininglib.h \
@@ -27,7 +28,8 @@ HEADERS += \
     src/core/data/setting_data.h \
     src/core/entities/component.h \
     src/core/entities/integration_plan.h \
-    src/core/entities/build.h
+    src/core/entities/build.h \
+    src/core/util/util.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
