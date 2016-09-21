@@ -38,7 +38,6 @@ public:
     void setStartDate(QDate& d);
     void setCw(QString& s);
     void setMergeDate(QDate& d);
-    //QList<Build> m_builds;
     void setNoMerge(bool b);
     void setSecurityLevel(QString& s);
     void setAssignees(QString& s);

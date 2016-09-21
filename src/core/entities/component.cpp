@@ -56,3 +56,12 @@ const QString ComponentSoftware::toString()const
 {
     return "ComponentSoftware[" + this->name() + " - " + this->version() + " - " + this->description() + "]";
 }
+
+bool ComponentSoftware::operator==(const ComponentSoftware &other)
+{
+    if(this->m_name == other.name())
+    {
+        return true;
+    }
+    return false;
+}

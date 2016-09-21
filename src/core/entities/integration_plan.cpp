@@ -92,3 +92,73 @@ const QString& IntegrationPlan::html_code()const
 {
     return this->m_html_code;
 }
+
+void IntegrationPlan::setSummary(QString& s)
+{
+    this->m_summary = s;
+}
+
+void IntegrationPlan::setDueDate(QDate& d)
+{
+    this->m_due_date = d;
+}
+
+void IntegrationPlan::setStartDate(QDate& d)
+{
+    this->m_start_date = d;
+}
+
+void IntegrationPlan::setCw(QString& s)
+{
+    this->m_cw = s;
+}
+
+void IntegrationPlan::setMergeDate(QDate& d)
+{
+    this->m_merge_date = d;
+}
+
+void IntegrationPlan::setNoMerge(bool b)
+{
+    this->m_noMerge = b;
+}
+
+void IntegrationPlan::setSecurityLevel(QString& s)
+{
+    this->m_security_level = s;
+}
+
+void IntegrationPlan::setAssignees(QString& s)
+{
+    this->m_assignees = s;
+}
+
+void IntegrationPlan::setPic(QString& s)
+{
+    this->m_pic = s;
+}
+
+void IntegrationPlan::setSubProject(QString& s)
+{
+    this->m_sub_project = s;
+}
+
+void IntegrationPlan::setLabel(QString& s)
+{
+    this->m_label = s;
+}
+
+void IntegrationPlan::setPriority(QString& s)
+{
+    this->m_priority = s;
+}
+
+void IntegrationPlan::setStpType(QString& s)
+{
+    this->m_stp_type = s;
+}
+
+void IntegrationPlan::setHtmlCode(QString& s)
+{
+    this->m_html_code = s;
+}

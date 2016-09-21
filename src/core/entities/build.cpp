@@ -133,3 +133,15 @@ const QString Build::toString()
             this->m_delivery_day.toString() + " " +
             this->m_noMerge + " ]";
 }
+
+bool Build::addComponent(ComponentSoftware &newComponent)
+{
+    /*foreach (component, this->m_components) {
+        if( component == newComponent )
+        {
+            return false;
+        }
+    }*/
+    this->m_components.append(newComponent);
+    return true;
+}

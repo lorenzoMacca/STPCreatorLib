@@ -39,6 +39,7 @@ public:
     void setNoMerge(bool b);
     const QStringList getBuildTypes();
     const QString toString();
+    bool addComponent(ComponentSoftware &newComponent);
 
 public slots:
 
