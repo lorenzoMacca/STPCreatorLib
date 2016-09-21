@@ -4,7 +4,7 @@ QUtilSTP::QUtilSTP(QObject *parent):QObject(parent)
 {
 }
 
-const QString QUtilSTP::getDateDDMMYYYY(QDate date, QChar separator)
+const QString QUtilSTP::getDateDDMMYYYY(const QDate &date, QChar separator)
 {
     return date.day() + separator + date.month() + separator + date.year();
 }
