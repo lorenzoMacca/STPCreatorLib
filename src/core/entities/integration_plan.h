@@ -5,6 +5,7 @@
 #include <QString>
 #include <QDate>
 #include <QList>
+#include <QListIterator>
 #include "build.h"
 
 class IntegrationPlan : public QObject{
@@ -47,6 +48,9 @@ public:
     void setPriority(QString& s);
     void setStpType(QString& s);
     void setHtmlCode(QString& s);
+
+    bool addBuild(Build &newBuild);
+    int numBuils()const;
     //todo
     const QString toString();
     const QString getDateDDMMYYYY(QDate date);

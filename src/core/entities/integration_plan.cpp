@@ -162,3 +162,23 @@ void IntegrationPlan::setHtmlCode(QString& s)
 {
     this->m_html_code = s;
 }
+
+bool IntegrationPlan::addBuild(Build &newBuild)
+{
+    QListIterator<Build> iter(this->m_builds);
+    while(iter.hasNext())
+    {
+        Build b = iter.next();
+        if( b == newBuild )
+        {
+            return false;
+        }
+    }
+    this->m_builds.append(newBuild);
+    return true;
+}
+
+int IntegrationPlan::numBuils()const
+{
+    return this->m_builds.size();
+}

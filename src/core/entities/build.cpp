@@ -148,3 +148,17 @@ bool Build::addComponent(ComponentSoftware &newComponent)
     this->m_components.append(newComponent);
     return true;
 }
+
+int Build::numComponents()const
+{
+    return this->m_components.size();
+}
+
+bool Build::operator==(const Build &other)
+{
+    if(this->m_name == other.name())
+    {
+        return true;
+    }
+    return false;
+}

@@ -17,6 +17,7 @@ public:
     Build(QObject *parent);
     Build(QString name, QDate start_date, QString build_type, QDate upload_date, QDate delivery_day, bool noMerge, QObject *parent);
     Build(const Build &other);
+    bool operator==(const Build &other);
 
     static const QString RELEASE;
     static const QString DEV_DROP;
@@ -41,6 +42,7 @@ public:
     const QStringList getBuildTypes();
     const QString toString();
     bool addComponent(ComponentSoftware &newComponent);
+    int numComponents()const;
 
 public slots:
 
