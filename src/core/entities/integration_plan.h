@@ -16,6 +16,38 @@ public:
     IntegrationPlan(QString summary, QDate due_date, QDate start_date, QString cw, QDate merge_date, QObject *parent);
     static const QString RELEASE;
     static const QString DEV_DROP;
+    //get
+    const QString& summary()const;
+    const QDate& due_date()const;
+    const QDate& start_date()const;
+    const QString& cw()const;
+    const QDate& merge_date()const;
+    const QList<Build>& builds()const;
+    bool noMerge()const;
+    const QString& security_level()const;
+    const QString& assignees()const;
+    const QString& pic()const;
+    const QString& sub_project()const;
+    const QString& label()const;
+    const QString& priority()const;
+    const QString& stp_type()const;
+    const QString& html_code()const;
+    //set
+    void setSummary(QString& s);
+    void setDueDate(QDate& d);
+    void setStartDate(QDate& d);
+    void setCw(QString& s);
+    void setMergeDate(QDate& d);
+    //QList<Build> m_builds;
+    void setNoMerge(bool b);
+    void setSecurityLevel(QString& s);
+    void setAssignees(QString& s);
+    void setPic(QString& s);
+    void setSubProject(QString& s);
+    void setLabel(QString& s);
+    void setPriority(QString& s);
+    void setStpType(QString& s);
+    void setHtmlCode(QString& s);
     //todo
     const QString toString();
     const QString getDateDDMMYYYY(QDate date);
@@ -23,6 +55,7 @@ public:
     const QDate getRealDueDate();   /*giorno dell'ultima attività*/
     bool checkIntegrationPlan();
     int compareDate(QDate d1, QDate d2); /*return -1 for d1 ; 1 for d2 ; 0 d1==d2*/
+
 
 public slots:
 
@@ -37,7 +70,7 @@ private:
     QString m_security_level;
     QString m_assignees;
     QString m_pic;
-    QString sub_project;
+    QString m_sub_project;
     QString m_label;
     QString m_priority;
     QString m_stp_type;
