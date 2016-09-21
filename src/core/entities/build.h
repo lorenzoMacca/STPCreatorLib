@@ -6,6 +6,7 @@
 #include <QDate>
 #include <QList>
 #include <QStringList>
+#include <QListIterator>
 #include "component.h"
 
 class Build : public QObject{

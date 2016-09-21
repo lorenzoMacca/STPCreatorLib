@@ -136,12 +136,15 @@ const QString Build::toString()
 
 bool Build::addComponent(ComponentSoftware &newComponent)
 {
-    /*foreach (component, this->m_components) {
-        if( component == newComponent )
+    QListIterator<ComponentSoftware> compIter(this->components());
+    while(compIter.hasNext())
+    {
+        ComponentSoftware component = compIter.next();
+        if(component == newComponent)
         {
             return false;
         }
-    }*/
+    }
     this->m_components.append(newComponent);
     return true;
 }
