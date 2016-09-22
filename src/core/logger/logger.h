@@ -4,6 +4,9 @@
 #include <QObject>
 #include <QString>
 #include <QFile>
+#include <QDebug>
+#include <QDate>
+#include "../util/util.h"
 
 class QLogger : public QObject{
     

@@ -13,6 +13,7 @@ class QUtilSTP : public QObject{
 public:
     QUtilSTP(QObject *parent);
     static const QString getDateDDMMYYYY(const QDate &date, QChar separator);
+    static const QString getCurrentDate(QString separator);
 
 public slots:
 
