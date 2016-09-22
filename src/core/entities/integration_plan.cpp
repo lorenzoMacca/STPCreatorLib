@@ -188,5 +188,17 @@ bool IntegrationPlan::checkIntegrationPlan()const
     return true;
 }
 
+/*return -1 for d1 ; 1 for d2 ; 0 d1==d2*/
+int IntegrationPlan::compareDate(QDate d1, QDate d2)
+{
+    if( d1 == d2 )
+    {
+        return 0;
+    }else if( d1 > d2 ){
+        return -1;
+    }
+    return 1;
+}
+
 
 

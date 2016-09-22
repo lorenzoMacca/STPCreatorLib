@@ -50,6 +50,7 @@ public:
     void setStpType(QString& s);
     void setHtmlCode(QString& s);
 
+    int compareDate(QDate d1, QDate d2); /*return -1 for d1 ; 1 for d2 ; 0 d1==d2*/
     bool addBuild(Build &newBuild);
     int numBuils()const;
     //todo
@@ -57,8 +58,6 @@ public:
     const QDate getRealStartDate(); /*giono della prima attività*/
     const QDate getRealDueDate();   /*giorno dell'ultima attività*/
     bool checkIntegrationPlan()const;
-    int compareDate(QDate d1, QDate d2); /*return -1 for d1 ; 1 for d2 ; 0 d1==d2*/
-
 
 public slots:
 

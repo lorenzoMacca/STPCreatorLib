@@ -2,19 +2,22 @@
 #define DATA_H
 
 #include <QObject>
-#include <QString>
+#include "setting_data.h"
 
 class Data : public QObject{
 
     Q_OBJECT
 
 public:
+    static Data* getInstance();
+
+protected:
     Data(QObject *parent);
 
 public slots:
 
 private:
-    QString m_text;
+    static Data *instance;
 
 signals:
 
