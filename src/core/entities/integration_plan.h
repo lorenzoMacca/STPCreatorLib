@@ -56,7 +56,7 @@ public:
     const QString toString();
     const QDate getRealStartDate(); /*giono della prima attività*/
     const QDate getRealDueDate();   /*giorno dell'ultima attività*/
-    bool checkIntegrationPlan();
+    bool checkIntegrationPlan()const;
     int compareDate(QDate d1, QDate d2); /*return -1 for d1 ; 1 for d2 ; 0 d1==d2*/
 
 

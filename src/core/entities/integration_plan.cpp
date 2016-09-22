@@ -182,3 +182,11 @@ int IntegrationPlan::numBuils()const
 {
     return this->m_builds.size();
 }
+
+bool IntegrationPlan::checkIntegrationPlan()const
+{
+    return true;
+}
+
+
+
