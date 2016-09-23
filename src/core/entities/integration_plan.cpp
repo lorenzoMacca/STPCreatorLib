@@ -183,11 +183,6 @@ int IntegrationPlan::numBuils()const
     return this->m_builds.size();
 }
 
-bool IntegrationPlan::checkIntegrationPlan()const
-{
-    return true;
-}
-
 /*return -1 for d1 ; 1 for d2 ; 0 d1==d2*/
 int IntegrationPlan::compareDate(QDate d1, QDate d2)
 {
@@ -200,6 +195,28 @@ int IntegrationPlan::compareDate(QDate d1, QDate d2)
     return 1;
 }
 
+const QDate IntegrationPlan::getRealDueDate()
+{
+    QDate dateOfTheLastBuild;
+    bool isInit = false;
+    QListIterator<Build> buildsIter(this->m_builds);
+    while(buildsIter.hasNext())
+    {
+        QDate currentDate = buildsIter.next().start_date();
+        if(!isInit)
+        {
+            dateOfTheLastBuild = currentDate;
+        }else
+        {
+            int compareResult = this->compareDate(dateOfTheLastBuild, currentDate);
+            if(compareResult == 1)
+            {
+                dateOfTheLastBuild = currentDate;
+            }
+        }
+    }
+    return dateOfTheLastBuild;
+}
 
 const QDate IntegrationPlan::getRealStartDate()
 {
@@ -222,4 +239,71 @@ const QDate IntegrationPlan::getRealStartDate()
         }
     }
     return dateOfTheFirstBuild;
+}
+
+const QString IntegrationPlan::toString()
+{
+    return "IntegrationPlan [" +
+            this->m_summary + " " +
+            this->m_due_date.toString() + " " +
+            this->m_start_date.toString() + " " +
+            this->m_merge_date.toString() + " " +
+            this->m_cw + " " +
+            "NumBuild: " + this->numBuils() + " " +
+            this->m_security_level + " " +
+            this->m_assignees + " " +
+            this->m_pic + " " +
+            this->m_sub_project + " " +
+            this->m_label + " " +
+            this->m_priority + " " +
+            this->m_stp_type + " ]";
+}
+
+bool IntegrationPlan::checkIntegrationPlan()const
+{
+    if( this->m_summary == "" )
+    {
+        return false;
+    }
+    if( this->m_due_date.isNull() ){
+        return false;
+    }
+    if( this->m_start_date.isNull() ){
+        return false;
+    }
+    if( !this->m_noMerge || this->m_merge_date.isNull()){
+        return false;
+    }
+    if( this->m_cw == "" ){
+        return false;
+    }
+    if( this->numBuils() == 0 ){
+        return false;
+    }
+    if( this->m_security_level == "" ){
+        return false;
+    }
+    if( this->m_assignees == "" ){
+        return false;
+    }
+    if( this->m_pic == "" ){
+        return false;
+    }
+    if( this->m_sub_project == "" ){
+        return false;
+    }
+    if( this->m_label == "" ){
+        return false;
+    }
+    if( this->m_priority == "" ){
+        return false;
+    }
+    if( this->m_stp_type == "" ){
+        return false;
+    }
+    if( this->m_html_code == "" ){
+        return false;
+    }
+
+    return true;
 }

@@ -58,11 +58,13 @@ public:
     bool addBuild(Build &newBuild);
     int numBuils()const;
     const QDate getRealStartDate(); /*giono della prima attività*/
-    //todo
-    const QString toString();
-
     const QDate getRealDueDate();   /*giorno dell'ultima attività*/
+    const QString toString();
     bool checkIntegrationPlan()const;
+    //todo
+
+
+
 
 public slots:
 

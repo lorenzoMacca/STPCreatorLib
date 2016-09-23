@@ -6,7 +6,7 @@ QUtilSTP::QUtilSTP(QObject *parent):QObject(parent)
 
 const QString QUtilSTP::getDateDDMMYYYY(const QDate &date, QChar separator)
 {
-    return date.day() + separator + date.month() + separator + date.year();
+    return QString::number(date.day()) + separator + QString::number(date.month()) + separator + QString::number(date.year());
 }
 
 const QString QUtilSTP::getCurrentDate(QString separator)
