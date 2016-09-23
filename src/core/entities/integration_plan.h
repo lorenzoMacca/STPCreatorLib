@@ -7,7 +7,9 @@
 #include <QList>
 #include <QChar>
 #include <QListIterator>
+#include <QListIterator>
 #include "build.h"
+#include "../logger/logger.h"
 
 class IntegrationPlan : public QObject{
 
@@ -16,6 +18,8 @@ class IntegrationPlan : public QObject{
 public:
     IntegrationPlan(QObject *parent);
     IntegrationPlan(QString summary, QDate due_date, QDate start_date, QString cw, QDate merge_date, QObject *parent);
+    /*IntegrationPlan(const IntegrationPlan &other);
+    IntegrationPlan &operator=(const IntegrationPlan &other);*/
     static const QString RELEASE;
     static const QString DEV_DROP;
     //get
@@ -53,9 +57,10 @@ public:
     int compareDate(QDate d1, QDate d2); /*return -1 for d1 ; 1 for d2 ; 0 d1==d2*/
     bool addBuild(Build &newBuild);
     int numBuils()const;
+    const QDate getRealStartDate(); /*giono della prima attività*/
     //todo
     const QString toString();
-    const QDate getRealStartDate(); /*giono della prima attività*/
+
     const QDate getRealDueDate();   /*giorno dell'ultima attività*/
     bool checkIntegrationPlan()const;
 

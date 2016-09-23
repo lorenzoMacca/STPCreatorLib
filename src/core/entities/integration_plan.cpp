@@ -201,4 +201,25 @@ int IntegrationPlan::compareDate(QDate d1, QDate d2)
 }
 
 
-
+const QDate IntegrationPlan::getRealStartDate()
+{
+    QDate dateOfTheFirstBuild;
+    bool isInit = false;
+    QListIterator<Build> buildsIter(this->m_builds);
+    while(buildsIter.hasNext())
+    {
+        QDate currentDate = buildsIter.next().start_date();
+        if(!isInit)
+        {
+            dateOfTheFirstBuild = currentDate;
+        }else
+        {
+            int compareResult = this->compareDate(dateOfTheFirstBuild, currentDate);
+            if(compareResult == -1)
+            {
+                dateOfTheFirstBuild = currentDate;
+            }
+        }
+    }
+    return dateOfTheFirstBuild;
+}
