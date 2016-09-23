@@ -36,3 +36,16 @@ void Data::setIntegrationPlan(IntegrationPlan *integration_plan)
     }
     this->m_integration_plan_ptr = integration_plan;
 }
+
+const QString Data::getHTMLCode()
+{
+    QString html_code = "<html></html>";
+    return html_code;
+}
+
+const QList<QDate> Data::getDatesBetween(QDate& A, QDate& B)
+{
+    QList<QDate> dates;
+    dates << A << B;
+    return dates;
+}

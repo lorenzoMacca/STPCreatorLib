@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QList>
+#include <QDate>
 #include "setting_data.h"
 #include "../entities/integration_plan.h"
 
@@ -17,6 +18,9 @@ public:
     IntegrationPlan* integrationPlan();
     void removeIntegrationPlan();
     void setIntegrationPlan(IntegrationPlan *integration_plan);
+    //TODO
+    const QString getHTMLCode();
+    const QList<QDate> getDatesBetween(QDate& A, QDate& B);
 
 public slots:
 
