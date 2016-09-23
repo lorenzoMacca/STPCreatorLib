@@ -15,7 +15,7 @@ QLogger::QLogger(QFile *file, bool is_debug_mode, QObject *parent):QObject(paren
 
 void QLogger::debug(QString message)
 {
-    qDebug() << "[" << QUtilSTP::getCurrentDate(" - ") << "]" << message;
+    qDebug() << "[" << QUtilSTP::getCurrentDateYYYYMMDD(" - ") << "]" << message;
 }
 
 QLogger* QLogger::getInstance(QObject *parent)

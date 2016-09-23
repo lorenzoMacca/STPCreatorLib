@@ -11,16 +11,17 @@ class Data : public QObject{
     Q_OBJECT
 
 public:
-    static Data* getInstance();
-
-protected:
-    Data(QObject *parent);
+    Data(IntegrationPlan *integration_plan, QObject *parent);
+    void initSettingData();
+    SettingData* settingData();
+    IntegrationPlan* integrationPlan();
+    void removeIntegrationPlan();
+    void setIntegrationPlan(IntegrationPlan *integration_plan);
 
 public slots:
 
 private:
-    static Data *instance;
-    IntegrationPlan *m_intgeration_plan_ptr;
+    IntegrationPlan *m_integration_plan_ptr;
     SettingData *m_settingData_ptr;
 
 signals:
