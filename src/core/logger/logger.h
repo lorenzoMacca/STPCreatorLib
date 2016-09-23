@@ -13,14 +13,18 @@ class QLogger : public QObject{
     Q_OBJECT
     
 public:
-    QLogger(QObject *parent);
-    QLogger(QFile *file, bool is_debug_mode, QObject *parent);
+    static QLogger* getInstance(QObject *parent);
     //TODO
     void debug(QString message);
+
+protected:
+    QLogger(QObject *parent=0);
+    QLogger(QFile *file, bool is_debug_mode, QObject *parent);
 
 public slots:
 
 private:
+    static QLogger *instance;
     bool m_is_debug_mode;
     QFile *m_file_ptr;
     
