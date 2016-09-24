@@ -43,9 +43,3 @@ const QString Data::getHTMLCode()
     return html_code;
 }
 
-const QList<QDate> Data::getDatesBetween(QDate& A, QDate& B)
-{
-    QList<QDate> dates;
-    dates << A << B;
-    return dates;
-}

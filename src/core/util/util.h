@@ -15,6 +15,7 @@ public:
     static const QString getDateDDMMYYYY(const QDate &date, QChar separator);
     static const QString getCurrentDateDDMMYYYY(QString separator);
     static const QString getCurrentDateYYYYMMDD(QString separator);
+    const QList<QDate> getDatesBetween(QDate& A, QDate& B);
 
 public slots:
 

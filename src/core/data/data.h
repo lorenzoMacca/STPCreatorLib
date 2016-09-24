@@ -20,7 +20,7 @@ public:
     void setIntegrationPlan(IntegrationPlan *integration_plan);
     //TODO
     const QString getHTMLCode();
-    const QList<QDate> getDatesBetween(QDate& A, QDate& B);
+
 
 public slots:
 

@@ -20,3 +20,10 @@ const QString QUtilSTP::getCurrentDateYYYYMMDD(QString separator)
     QDate d = QDate::currentDate();
     return QString::number(d.year()) + separator + QString::number(d.month()) + separator + QString::number(d.day());
 }
+
+const QList<QDate> QUtilSTP::getDatesBetween(QDate& A, QDate& B)
+{
+    QList<QDate> dates;
+    dates << A << B;
+    return dates;
+}
