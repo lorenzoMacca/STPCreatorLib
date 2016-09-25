@@ -10,12 +10,15 @@ class TEST_001 : public TEST{
     
 public:
     TEST_001(QObject *parent=0);
+    TEST_001(const TEST_001 &other);
     const QString& name()const;
     void executeTest();
+    bool operator==(const TEST_001 &other);
 
 public slots:
 
 private:
+    QString m_name;
     
 signals:
 

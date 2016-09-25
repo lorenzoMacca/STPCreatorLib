@@ -16,7 +16,7 @@ public:
 public slots:
 
 private:
-    QList<TEST> m_testes;
+    QList<TEST*> m_testes;
     
 signals:
 
