@@ -20,7 +20,9 @@ SOURCES += \
     src/core/entities/integration_plan.cpp \
     src/core/entities/build.cpp \
     src/core/util/util.cpp \
-    src/core/logger/logger.cpp
+    src/core/logger/logger.cpp \
+    src/core/test/TEST_001.cpp \
+    src/core/test/test_manager.cpp
 
 HEADERS += \
     inc/traininglib.h \
@@ -31,7 +33,10 @@ HEADERS += \
     src/core/entities/integration_plan.h \
     src/core/entities/build.h \
     src/core/util/util.h \
-    src/core/logger/logger.h
+    src/core/logger/logger.h \
+    src/core/test/TEST_001.h \
+    src/core/test/TEST.h \
+    src/core/test/test_manager.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
