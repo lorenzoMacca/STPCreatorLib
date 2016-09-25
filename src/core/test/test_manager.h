@@ -2,6 +2,7 @@
 #define TEST_MANAGER_H
 
 #include <QObject>
+#include <QListIterator>
 #include "TEST_001.h"
 #include "TEST.h"
 #include <QList>
@@ -12,6 +13,7 @@ class TestManager : public QObject{
     
 public:
     TestManager(QObject *parent);
+    void executeAllTestes();
 
 public slots:
 

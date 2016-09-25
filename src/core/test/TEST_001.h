@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "TEST.h"
+#include <QDebug>
 
 class TEST_001 : public TEST{
     

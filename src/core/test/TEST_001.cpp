@@ -8,7 +8,8 @@ TEST_001::TEST_001(QObject *parent)
 
 void TEST_001::executeTest()
 {
-
+    qDebug() << "###########Running: " + this->m_name + " ###########";
+    qDebug() << "###########Ending : " + this->m_name + " ###########";
 }
 
 const QString& TEST_001::name()const
