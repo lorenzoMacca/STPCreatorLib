@@ -24,7 +24,10 @@ SOURCES += \
     src/core/test/TEST_001.cpp \
     src/core/test/test_manager.cpp \
     src/core/makeHtml/document/html_document_title.cpp \
-    src/core/makeHtml/document/html_document_header.cpp
+    src/core/makeHtml/document/html_document_header.cpp \
+    src/core/makeHtml/table/html_table.cpp \
+    src/core/makeHtml/document/html_document.cpp \
+    src/core/makeHtml/table/columns/html_column.cpp
 
 HEADERS += \
     inc/traininglib.h \
@@ -40,7 +43,10 @@ HEADERS += \
     src/core/test/TEST.h \
     src/core/test/test_manager.h \
     src/core/makeHtml/document/html_document_title.h \
-    src/core/makeHtml/document/html_document_header.h
+    src/core/makeHtml/document/html_document_header.h \
+    src/core/makeHtml/table/html_table.h \
+    src/core/makeHtml/document/html_document.h \
+    src/core/makeHtml/table/columns/html_column.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
