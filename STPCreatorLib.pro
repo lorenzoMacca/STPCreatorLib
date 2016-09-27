@@ -22,7 +22,9 @@ SOURCES += \
     src/core/util/util.cpp \
     src/core/logger/logger.cpp \
     src/core/test/TEST_001.cpp \
-    src/core/test/test_manager.cpp
+    src/core/test/test_manager.cpp \
+    src/core/makeHtml/document/html_document_title.cpp \
+    src/core/makeHtml/document/html_document_header.cpp
 
 HEADERS += \
     inc/traininglib.h \
@@ -36,7 +38,9 @@ HEADERS += \
     src/core/logger/logger.h \
     src/core/test/TEST_001.h \
     src/core/test/TEST.h \
-    src/core/test/test_manager.h
+    src/core/test/test_manager.h \
+    src/core/makeHtml/document/html_document_title.h \
+    src/core/makeHtml/document/html_document_header.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
