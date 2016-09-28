@@ -42,7 +42,43 @@ QString HtmlColumn::getHeaderColumnCode()
 
 QString HtmlColumn::getBodyColumnCode()
 {
-    return "";
+    QString code = "<!-- COLUMN  --><td>";
+    QListIterator<Build> buildIter(this->m_builds);
+    while(buildIter.hasNext())
+    {
+        Build build(buildIter.next());
+        if( build.start_date() == this->m_date )
+        {
+            if(!build.noMerge())
+            {
+                code = code + "<div class='aui-message-max' style='background-color: #d2f4ff'>\t<p\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;; font-size: 10pt;'>\t\t<strong>Radio_App</strong> - Ver." + this->m_merge_day + "</p></div>";
+            }
+            QListIterator<ComponentSoftware> componentsIter(build.components());
+            while(componentsIter.hasNext())
+            {
+                ComponentSoftware component(componentsIter.next());
+                code = code + "<div class='aui-message-max' style='background-color: #d2f4ff'>\t<p\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;; font-size: 10pt;'>\t\t<strong>" + component.name() + "</strong>\t</p>\t<p\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;; font-size: 10pt;'>\t\t<strong>" + component.description() + "</strong>\t</p>\t<p\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;; font-size: 10pt;'>Ver." + component.version() + "</p></div>";
+            }
+        }
+        code = code + "<div style='background-color: #ffffff'>\t<p\t\tstyle='text-align: left; margin-left: auto; margin-right: auto;; font-size: 10pt; color: #ff0000;'>\t\t<strong>" + build.description() + "</strong>\t</p></div>";
+        code = code + "<div class='aui-message-max' style='background-color: #ffffff'>\t<p\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;; font-size: 10pt;'>\t\t<strong><a\thref='http://bugs.lng.pce.cz.pan.eu:8081/secure/Dashboard.jspa?selectPageId=19331'>" +
+                build.name() + "</a></strong>\t</p></div>";
+        code = code + "<HR COLOR='blue'>";
+        if ((build.build_type() ==  "dev_drop" || build.build_type() ==  "release") &&
+          build.upload_day() == this->m_date)
+        {
+          code = code + "<p></p><div class='aui-message-max' style='background-color: #d2ffd5'>\t<p class='title'\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;'>\t\t<strong><span style='color: #ff0000; font-size: 10pt;'>Upload</span></strong>\t</p>\t<p class='title'\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;'>\t\t<strong><span style='font-size: 10pt;'>" +
+                  build.name() + "</span></strong>\t</p>\t<p\t\tstyle='text-align: center; margin-left: auto; margin-right: auto; font-size: 10pt;'>Time:\t\t18:00</p></div> <!-- .aui-message-max --><p></p>";
+        }
+        if (build.build_type() == "release" &&
+          build.delivery_day() ==  this->m_date) {
+          code = code + "<p></p><div class='aui-message-max' style='background-color: #d2ffd5'>\t<p class='title'\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;'>\t\t<strong><span style='color: #ff0000; font-size: 10pt;'>Delivery</span></strong>\t</p>\t<p class='title'\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;'>\t\t<strong><span style='font-size: 10pt;'>" +
+                  build.name() + "</span></strong>\t</p>\t<p\t\tstyle='text-align: center; margin-left: auto; margin-right: auto; font-size: 10pt;'>Time:\t\t18:00</p></div> <!-- .aui-message-max --><p></p>";
+        }
+
+    }
+    code = code + "</td>";
+    return code;
 }
 
 HtmlColumn::HtmlColumn(const HtmlColumn &other)
