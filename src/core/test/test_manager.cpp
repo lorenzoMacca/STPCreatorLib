@@ -7,12 +7,16 @@ TestManager::TestManager(QObject *parent)
     this->m_testes.append(test001);
 }
 
-void TestManager::executeAllTestes()
+bool TestManager::executeAllTestes()
 {
     QListIterator<TEST*> testIter(this->m_testes);
     while(testIter.hasNext())
     {
         TEST* currentTest = testIter.next();
-        currentTest->executeTest();
+        if(currentTest->executeTest() == false)
+        {
+            return false;
+        }
     }
+    return true;
 }

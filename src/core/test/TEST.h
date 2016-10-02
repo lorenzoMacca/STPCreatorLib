@@ -9,7 +9,7 @@ class TEST : public QObject{
     Q_OBJECT
 
 public:
-    virtual void executeTest()=0;
+    virtual bool executeTest()=0;
     virtual const QString& name()const;
 
 };

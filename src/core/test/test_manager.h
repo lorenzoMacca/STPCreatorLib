@@ -13,7 +13,7 @@ class TestManager : public QObject{
     
 public:
     TestManager(QObject *parent);
-    void executeAllTestes();
+    bool executeAllTestes();
 
 public slots:
 
