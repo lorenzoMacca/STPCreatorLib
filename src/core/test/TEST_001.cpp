@@ -8,6 +8,9 @@ TEST_001::TEST_001(QObject *parent)
 
 bool TEST_001::executeTest()
 {
+    int totTestsPassed = 0;
+    int totTestsFaild = 0;
+
     qDebug() << "###########Running: " + this->m_name + " ###########";
 
     qDebug() << "Components creation (HON02 build simulation)";
@@ -27,7 +30,30 @@ bool TEST_001::executeTest()
     IntegrationPlan stpHon02Rel("HON02 Release CW", QDate(2016,10,7), QDate(2016,10,3), "54", QDate(2016,9,28), 0);
     stpHon02Rel.addBuild(hon02);
 
+    qDebug() << "TEST_001.001 - Checking the number of components";
+    const int componentNumber = 4;
+    if( stpHon02Rel.builds().first().numComponents() == componentNumber )
+    {
+        qDebug() << "---> passed";
+        totTestsPassed++;
+    }else
+    {
+        qDebug() << "---> faild";
+        totTestsFaild++;
+    }
 
+    int totTests = totTestsFaild + totTestsPassed;
+
+    qDebug() << "Results:";
+    if( totTestsFaild > 0 )
+    {
+        qDebug() << "TEST_001: failed";
+        qDebug() << "Numer of failures: " + QString::number(totTestsFaild) + "/" + QString::number(totTests);
+    }else
+    {
+        qDebug() << "TEST_001: passed";
+        qDebug() << "Numer of tests: " + QString::number(totTestsPassed) + "/" + QString::number(totTests);
+    }
 
     qDebug() << "###########Ending : " + this->m_name + " ###########";
     return true;
