@@ -14,13 +14,13 @@ bool TEST_001::executeTest()
     qDebug() << "###########Running: " + this->m_name + " ###########";
 
     qDebug() << "Components creation (HON02 build simulation)";
-    ComponentSoftware amfm1("AMFM", "060.001.00", "", 0);
-    ComponentSoftware cpf1("CPF", "061.001.00", "", 0);
+    ComponentSoftware amfm1("AMFM", "060.001.00", "DIRANA6.0", 0);
+    ComponentSoftware cpf1("CPF", "060.001.00", "", 0);
     ComponentSoftware hdradio1("HDRADIO", "059.001.00", "", 0);
     ComponentSoftware tunutil1("TUNUTIL", "028.001.00", "", 0);
 
     qDebug() << "HON02 build creation";
-    Build hon02("HON02_C02_001_R00", QDate(2016,10,4), Build::RELEASE, QDate(2016,10,5), QDate(2016,10,6), false, 0);
+    Build hon02("HON02_C02_001_R00", QDate(2016,9,22), Build::RELEASE, QDate(2016,9,23), QDate(2016,9,26), false, 0);
     bool isThatComponentAdded = true;
     isThatComponentAdded = hon02.addComponent(amfm1);
     isThatComponentAdded = hon02.addComponent(cpf1);
@@ -38,7 +38,7 @@ bool TEST_001::executeTest()
         totTestsFaild++;
     }
 
-    IntegrationPlan stpHon02Rel("HON02 Release CW", QDate(2016,10,7), QDate(2016,10,3), "54", QDate(2016,9,28), 0);
+    IntegrationPlan stpHon02Rel("HON02 Release CW", QDate(2016,9,26), QDate(2016,9,20), "54", QDate(2016,9,21), 0);
 
     qDebug() << "TEST_001.002 - adding the built to the stp";
     if(stpHon02Rel.addBuild(hon02))
@@ -65,8 +65,50 @@ bool TEST_001::executeTest()
         totTestsFaild++;
     }
 
-    int totTests = totTestsFaild + totTestsPassed;
+    qDebug() << "TEST_001.004 - Checking the days between the start and the end of the stp";
+    QUtilSTP *util = new QUtilSTP(this);
+    QList<QDate> datesInBetween = util->getDatesBetween(stpHon02Rel.start_date(), stpHon02Rel.due_date());
+    QListIterator<QDate> dateIterator(datesInBetween);
+    bool etwasFalschesGefunden = false;
 
+    QDate d = dateIterator.next();
+    if(d.day() != 20 || d.month() != 9 || d.year() != 2016)
+    {
+        etwasFalschesGefunden = true;
+    }
+    d = dateIterator.next();
+    if(d.day() != 21 || d.month() != 9 || d.year() != 2016)
+    {
+        etwasFalschesGefunden = true;
+    }
+    d = dateIterator.next();
+    if(d.day() != 22 || d.month() != 9 || d.year() != 2016)
+    {
+        etwasFalschesGefunden = true;
+    }
+    d = dateIterator.next();
+    if(d.day() != 23 || d.month() != 9 || d.year() != 2016)
+    {
+        etwasFalschesGefunden = true;
+    }
+    d = dateIterator.next();
+    if(d.day() != 26 || d.month() != 9 || d.year() != 2016)
+    {
+        etwasFalschesGefunden = true;
+    }
+    if( !etwasFalschesGefunden )
+    {
+        qDebug() << "---> passed";
+        totTestsPassed++;
+    }else
+    {
+        qDebug() << "---> faild";
+        totTestsFaild++;
+    }
+
+
+
+    int totTests = totTestsFaild + totTestsPassed;
     qDebug() << "Results:";
     if( totTestsFaild > 0 )
     {

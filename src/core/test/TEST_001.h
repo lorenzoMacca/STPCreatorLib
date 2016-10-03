@@ -8,6 +8,7 @@
 #include "../entities/component.h"
 #include "../entities/build.h"
 #include "../entities/integration_plan.h"
+#include "../util/util.h"
 
 class TEST_001 : public TEST{
     

@@ -21,9 +21,17 @@ const QString QUtilSTP::getCurrentDateYYYYMMDD(QString separator)
     return QString::number(d.year()) + separator + QString::number(d.month()) + separator + QString::number(d.day());
 }
 
-const QList<QDate> QUtilSTP::getDatesBetween(QDate& A, QDate& B)
+const QList<QDate> QUtilSTP::getDatesBetween(QDate A, QDate B)
 {
     QList<QDate> dates;
-    dates << A << B;
+    dates << A;
+    while(A!=B)
+    {
+        A=A.addDays(1);
+        if(A.dayOfWeek() != 6 && A.dayOfWeek() != 7)
+        {
+            dates << A;
+        }
+    }
     return dates;
 }
