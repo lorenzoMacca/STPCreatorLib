@@ -21,24 +21,47 @@ bool TEST_001::executeTest()
 
     qDebug() << "HON02 build creation";
     Build hon02("HON02_C02_001_R00", QDate(2016,10,4), Build::RELEASE, QDate(2016,10,5), QDate(2016,10,6), false, 0);
-    hon02.addComponent(amfm1);
-    hon02.addComponent(cpf1);
-    hon02.addComponent(hdradio1);
-    hon02.addComponent(tunutil1);
+    bool isThatComponentAdded = true;
+    isThatComponentAdded = hon02.addComponent(amfm1);
+    isThatComponentAdded = hon02.addComponent(cpf1);
+    isThatComponentAdded = hon02.addComponent(hdradio1);
+    isThatComponentAdded = hon02.addComponent(tunutil1);
 
-    qDebug() << "HON02 ShortTermPlan creation";
-    IntegrationPlan stpHon02Rel("HON02 Release CW", QDate(2016,10,7), QDate(2016,10,3), "54", QDate(2016,9,28), 0);
-    stpHon02Rel.addBuild(hon02);
-
-    qDebug() << "TEST_001.001 - Checking the number of components";
-    const int componentNumber = 4;
-    if( stpHon02Rel.builds().first().numComponents() == componentNumber )
+    qDebug() << "TEST_001.001 - adding the components to the build";
+    if(isThatComponentAdded)
     {
         qDebug() << "---> passed";
         totTestsPassed++;
     }else
     {
-        qDebug() << "---> faild";
+        qDebug() << "---> faild, one or more components have not been added to the build";
+        totTestsFaild++;
+    }
+
+    IntegrationPlan stpHon02Rel("HON02 Release CW", QDate(2016,10,7), QDate(2016,10,3), "54", QDate(2016,9,28), 0);
+
+    qDebug() << "TEST_001.002 - adding the built to the stp";
+    if(stpHon02Rel.addBuild(hon02))
+    {
+        qDebug() << "---> passed";
+        totTestsPassed++;
+    }else
+    {
+        qDebug() << "---> faild, the build has not been added to the stp";
+        totTestsFaild++;
+    }
+
+
+    qDebug() << "TEST_001.003 - Checking the number of components";
+    const int componentNumber = 4;
+    int numComponentIntoTheFirstBuild = stpHon02Rel.builds().first().numComponents();
+    if( numComponentIntoTheFirstBuild == componentNumber )
+    {
+        qDebug() << "---> passed";
+        totTestsPassed++;
+    }else
+    {
+        qDebug() << "---> faild, the number of component should be 4 but it's " + QString::number(numComponentIntoTheFirstBuild);
         totTestsFaild++;
     }
 
@@ -47,11 +70,9 @@ bool TEST_001::executeTest()
     qDebug() << "Results:";
     if( totTestsFaild > 0 )
     {
-        qDebug() << "TEST_001: failed";
         qDebug() << "Numer of failures: " + QString::number(totTestsFaild) + "/" + QString::number(totTests);
     }else
     {
-        qDebug() << "TEST_001: passed";
         qDebug() << "Numer of tests: " + QString::number(totTestsPassed) + "/" + QString::number(totTests);
     }
 

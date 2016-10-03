@@ -10,7 +10,7 @@ class TEST : public QObject{
 
 public:
     virtual bool executeTest()=0;
-    virtual const QString& name()const;
+    virtual const QString& name()const=0;
 
 };
 

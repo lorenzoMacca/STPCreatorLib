@@ -29,6 +29,11 @@ Build::Build(const Build &other):QObject(other.parent())
     this->m_upload_day = other.upload_day();
     this->m_delivery_day  = other.delivery_day();
     this->m_noMerge = other.noMerge();
+    QListIterator<ComponentSoftware> componentIter(other.components());
+    while(componentIter.hasNext())
+    {
+        this->m_components.append(componentIter.next());
+    }
 }
 
 Build& Build::operator=(const Build &other)

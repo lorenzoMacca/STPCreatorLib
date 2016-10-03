@@ -27,7 +27,7 @@ SOURCES += \
     src/core/makeHtml/document/html_document_header.cpp \
     src/core/makeHtml/table/html_table.cpp \
     src/core/makeHtml/document/html_document.cpp \
-    src/core/makeHtml/table/columns/html_column.cpp
+    src/core/makeHtml/table/columns/html_column.cpp \
 
 HEADERS += \
     inc/traininglib.h \
