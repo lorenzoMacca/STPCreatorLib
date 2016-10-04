@@ -127,8 +127,9 @@ const QString& TEST_001::name()const
     return this->m_name;
 }
 
-TEST_001::TEST_001(const TEST_001 &other):TEST_001(other.parent())
+TEST_001::TEST_001(const TEST_001 &other)
 {
+    this->setParent(other.parent());
     this->m_name = other.name();
 }
 

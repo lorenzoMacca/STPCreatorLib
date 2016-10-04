@@ -28,6 +28,7 @@ SOURCES += \
     src/core/makeHtml/table/html_table.cpp \
     src/core/makeHtml/document/html_document.cpp \
     src/core/makeHtml/table/columns/html_column.cpp \
+    src/core/test/TEST_002.cpp
 
 HEADERS += \
     inc/traininglib.h \
@@ -46,7 +47,8 @@ HEADERS += \
     src/core/makeHtml/document/html_document_header.h \
     src/core/makeHtml/table/html_table.h \
     src/core/makeHtml/document/html_document.h \
-    src/core/makeHtml/table/columns/html_column.h
+    src/core/makeHtml/table/columns/html_column.h \
+    src/core/test/TEST_002.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
