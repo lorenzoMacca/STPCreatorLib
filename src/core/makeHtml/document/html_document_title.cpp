@@ -1,6 +1,6 @@
 #include "html_document_title.h"
 
-HtmlDocumentTitle::HtmlDocumentTitle(QString& cw, QObject *parent):QObject(parent)
+HtmlDocumentTitle::HtmlDocumentTitle(const QString& cw, QObject *parent):QObject(parent)
 {
     this->m_cw = cw;
 }

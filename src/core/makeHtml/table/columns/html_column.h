@@ -13,7 +13,7 @@ class HtmlColumn : public QObject{
     Q_OBJECT
     
 public:
-    HtmlColumn(QString day, QString ggMm, QList<Build> builds, QDate date, QString mergeDay, QObject *parent=0);
+    HtmlColumn(QString day, QString ggMm, const QList<Build>& builds, QDate date, const QString mergeDay, QObject *parent=0);
     HtmlColumn(const HtmlColumn &other);
     HtmlColumn &operator=(const HtmlColumn &other);
     QString getHeaderColumnCode();

@@ -26,7 +26,7 @@ bool TEST_002::executeTest()
 
     Data data(stpHon02Rel, this);
 
-
+    qDebug() << data.getHTMLCode();
 
     qDebug() << "TEST_002.001 - instatiatind Data class";
     if(true)

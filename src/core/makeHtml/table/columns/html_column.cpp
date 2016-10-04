@@ -1,6 +1,6 @@
 #include "html_column.h"
 
-HtmlColumn::HtmlColumn(QString day, QString ggMm, QList<Build> builds, QDate date, QString mergeDay, QObject *parent):QObject(parent)
+HtmlColumn::HtmlColumn(QString day, QString ggMm, const QList<Build>& builds, const QDate date, QString mergeDay, QObject *parent):QObject(parent)
 {
     this->m_day = day;
     this->m_ggMM = ggMm;

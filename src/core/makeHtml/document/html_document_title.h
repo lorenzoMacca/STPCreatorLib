@@ -9,7 +9,7 @@ class HtmlDocumentTitle : public QObject{
     Q_OBJECT
     
 public:
-    HtmlDocumentTitle(QString& cw, QObject *parent=0);
+    HtmlDocumentTitle(const QString& cw, QObject *parent=0);
     const QString& cw()const;
     void setCw(QString& cw);
     QString getCode();

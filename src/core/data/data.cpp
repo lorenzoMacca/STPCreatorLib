@@ -39,7 +39,28 @@ void Data::setIntegrationPlan(IntegrationPlan *integration_plan)
 
 const QString Data::getHTMLCode()
 {
-    QString html_code = "<html></html>";
-    return html_code;
+    QUtilSTP util(this);
+    HtmlDocumentTitle *documentTitle = new HtmlDocumentTitle(this->integrationPlan()->cw(), this);
+    HtmlTable *htmlTable = new HtmlTable(this);
+    QDate A(this->integrationPlan()->start_date());
+    QDate B(this->integrationPlan()->due_date());
+    QList<QDate> datesInBetween = util.getDatesBetween(A, B);
+    QListIterator<QDate> datesIter(datesInBetween);
+    while(datesIter.hasNext())
+    {
+        QDate currentDate = datesIter.next();
+        QString day = currentDate.shortDayName(currentDate.dayOfWeek());
+        QString ddMm = QString::number(currentDate.day()) + "." + QString::number(currentDate.month());
+        htmlTable->addColumn(new HtmlColumn(day,
+                                      ddMm,
+                                      this->integrationPlan()->builds(),
+                                      currentDate,
+                                      util.getDateDDMMYYYY(this->integrationPlan()->merge_date(), '.'),
+                                      this));
+    }
+
+    HtmlDocument document(documentTitle,htmlTable,this);
+    return document.getCode();
+
 }
 
