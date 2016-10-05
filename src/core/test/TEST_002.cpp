@@ -4,6 +4,7 @@ TEST_002::TEST_002(QObject *parent)
 {
     this->setParent(parent);
     this->m_name = "TEST_002";
+    this->m_filename="html_text.txt";
 }
 
 bool TEST_002::executeTest()
@@ -23,10 +24,20 @@ bool TEST_002::executeTest()
     hon02.addComponent(hdradio1);
     hon02.addComponent(tunutil1);
     IntegrationPlan *stpHon02Rel = new IntegrationPlan("HON02 Release CW", QDate(2016,9,26), QDate(2016,9,20), "54", QDate(2016,9,21), 0);
+    stpHon02Rel->addBuild(hon02);
 
     Data data(stpHon02Rel, this);
+    QString htmlOut = data.getHTMLCode();
+    qDebug() << htmlOut;
 
-    qDebug() << data.getHTMLCode();
+    QFile file( this->m_filename );
+    if ( file.open(QIODevice::ReadWrite) )
+    {
+        QTextStream stream( &file );
+        stream << htmlOut << endl;
+    }
+
+
 
     qDebug() << "TEST_002.001 - instatiatind Data class";
     if(true)

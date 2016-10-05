@@ -8,6 +8,7 @@ HtmlColumn::HtmlColumn(QString day, QString ggMm, const QList<Build>& builds, co
     this->m_date = date;
     this->m_merge_day = mergeDay;
     this->m_isEmpty = true;
+
     QListIterator<Build> buildIter(this->m_builds);
     while(buildIter.hasNext())
     {
@@ -22,10 +23,10 @@ HtmlColumn::HtmlColumn(QString day, QString ggMm, const QList<Build>& builds, co
     }
     if(this->m_isEmpty)
     {
-        this->m_width = "width='4%'";
+        this->m_width = " width='4%' ";
     }else
     {
-        this->m_width = "";
+        this->m_width = " ";
     }
 }
 
