@@ -30,7 +30,8 @@ SOURCES += \
     src/core/makeHtml/table/columns/html_column.cpp \
     src/core/test/TEST_002.cpp \
     src/core/test/TEST_003.cpp \
-    src/core/test/TEST_004.cpp
+    src/core/test/TEST_004.cpp \
+    src/core/jiraConnection/JiraSPInputFileCsv.cpp
 
 HEADERS += \
     inc/traininglib.h \
@@ -52,7 +53,8 @@ HEADERS += \
     src/core/makeHtml/table/columns/html_column.h \
     src/core/test/TEST_002.h \
     src/core/test/TEST_003.h \
-    src/core/test/TEST_004.h
+    src/core/test/TEST_004.h \
+    src/core/jiraConnection/JiraSPInputFileCsv.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
