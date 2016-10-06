@@ -60,11 +60,11 @@ QString HtmlColumn::getBodyColumnCode()
                 ComponentSoftware component(componentsIter.next());
                 code = code + "<div class='aui-message-max' style='background-color: #d2f4ff'>\t<p\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;; font-size: 10pt;'>\t\t<strong>" + component.name() + "</strong>\t</p>\t<p\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;; font-size: 10pt;'>\t\t<strong>" + component.description() + "</strong>\t</p>\t<p\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;; font-size: 10pt;'>Ver." + component.version() + "</p></div>";
             }
-        }
-        code = code + "<div style='background-color: #ffffff'>\t<p\t\tstyle='text-align: left; margin-left: auto; margin-right: auto;; font-size: 10pt; color: #ff0000;'>\t\t<strong>" + build.description() + "</strong>\t</p></div>";
-        code = code + "<div class='aui-message-max' style='background-color: #ffffff'>\t<p\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;; font-size: 10pt;'>\t\t<strong><a\thref='http://bugs.lng.pce.cz.pan.eu:8081/secure/Dashboard.jspa?selectPageId=19331'>" +
+            code = code + "<div style='background-color: #ffffff'>\t<p\t\tstyle='text-align: left; margin-left: auto; margin-right: auto;; font-size: 10pt; color: #ff0000;'>\t\t<strong>" + build.description() + "</strong>\t</p></div>";
+            code = code + "<div class='aui-message-max' style='background-color: #ffffff'>\t<p\t\tstyle='text-align: center; margin-left: auto; margin-right: auto;; font-size: 10pt;'>\t\t<strong><a\thref='http://bugs.lng.pce.cz.pan.eu:8081/secure/Dashboard.jspa?selectPageId=19331'>" +
                 build.name() + "</a></strong>\t</p></div>";
-        code = code + "<HR COLOR='blue'>";
+            code = code + "<HR COLOR='blue'>";
+        }
         if ((build.build_type() ==  "dev_drop" || build.build_type() ==  "release") &&
           build.upload_day() == this->m_date)
         {

@@ -5,6 +5,8 @@
 #include <QListIterator>
 #include "TEST_001.h"
 #include "TEST_002.h"
+#include "TEST_003.h"
+#include "TEST_004.h"
 #include "TEST.h"
 #include <QList>
 
