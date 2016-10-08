@@ -20,18 +20,17 @@ public:
     const QDir& locationinJiraEnv()const;
 	const QStringList* rowsList()const;
 	const QString toString()const;
-	void save();//should generate events
-
+    void save();//should generate events
 
 public slots:
 
 private:
     QFile* m_name;
     QDir m_locationinJiraEnv;
-	QStringList* m_rowsList;
-    
-signals:
+    QStringList* m_rowsList;
 
+signals:
+    void fileError();
 };
 
 #endif

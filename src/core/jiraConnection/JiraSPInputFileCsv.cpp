@@ -30,6 +30,7 @@ const QString JiraSPInputFileCsv::toString()const
 void JiraSPInputFileCsv::save()
 {
 	QStringListIterator iter(*this->m_rowsList);
+
 	if ( this->m_name->open(QIODevice::ReadWrite) )
     {
 		QTextStream stream( this->m_name );
@@ -37,5 +38,9 @@ void JiraSPInputFileCsv::save()
 		{
 			stream << iter.next() << endl;
 		}
-	}
+    }else
+    {
+        qDebug() << "ERROR";
+        emit fileError();
+    }
 }

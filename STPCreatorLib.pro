@@ -31,7 +31,8 @@ SOURCES += \
     src/core/test/TEST_002.cpp \
     src/core/test/TEST_003.cpp \
     src/core/test/TEST_004.cpp \
-    src/core/jiraConnection/JiraSPInputFileCsv.cpp
+    src/core/jiraConnection/JiraSPInputFileCsv.cpp \
+    src/core/test/TEST_005.cpp
 
 HEADERS += \
     inc/traininglib.h \
@@ -54,7 +55,8 @@ HEADERS += \
     src/core/test/TEST_002.h \
     src/core/test/TEST_003.h \
     src/core/test/TEST_004.h \
-    src/core/jiraConnection/JiraSPInputFileCsv.h
+    src/core/jiraConnection/JiraSPInputFileCsv.h \
+    src/core/test/TEST_005.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
