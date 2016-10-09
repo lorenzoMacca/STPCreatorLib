@@ -12,6 +12,8 @@
 #include "../util/util.h"
 #include "../jiraConnection/CreateJiraSPTInputFileCsv.h"
 #include "../jiraConnection/JiraSPInputFileCsv.h"
+#include "../jiraConnection/JiraScriptExecutor.h"
+#include "../jiraConnection/DefaultjiraScriptExecutor.h"
 
 class TEST_002 : public TEST{
     

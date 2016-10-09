@@ -49,6 +49,9 @@ bool TEST_002::executeTest()
     JiraSPInputFileCsv *input_file = create_jira_input_file->createJiraSPTInputFileCsv();
     input_file->save(data.settingData()->sp_input_file_name());
 
+    JiraScriptExecutor *jira_script_ececutor = new DefaultJiraScriptExecutor(&data, this);
+    jira_script_ececutor->createSPTicket();
+
 
     qDebug() << "TEST_002.001 - instatiatind Data class";
     if(true)
