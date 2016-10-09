@@ -1,9 +1,10 @@
 #include "CreateJiraSPTInputFileCsv.h"
 
-CreateJiraSPTInputFileCsv::CreateJiraSPTInputFileCsv(IntegrationPlan* ip, QObject *parent):QObject(parent)
+CreateJiraSPTInputFileCsv::CreateJiraSPTInputFileCsv(QString html_code, IntegrationPlan* ip, QObject *parent):QObject(parent)
 {
     this->m_ip = ip;
     this->m_separator = ";";
+    this->m_html_code = html_code;
 }
 
 JiraSPInputFileCsv* CreateJiraSPTInputFileCsv::createJiraSPTInputFileCsv()
@@ -36,7 +37,7 @@ void CreateJiraSPTInputFileCsv::putSTPUsingIntegrationPlan(QStringList *list)
     QString subProject = this->m_ip->sub_project();
     QString labels = "Integration_" + subProject;
     QString priority = "Major";
-    QString htmlCode; // = "\"" + " " + "\"";
+    QString htmlCode = QString("\"") + this->m_html_code + QString("\"");
 
     list->append(summary +s+
                  securityLevel +s+

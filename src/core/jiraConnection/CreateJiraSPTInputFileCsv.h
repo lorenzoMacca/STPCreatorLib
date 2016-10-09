@@ -17,7 +17,7 @@ class CreateJiraSPTInputFileCsv : public QObject{
     Q_OBJECT
     
 public:
-    CreateJiraSPTInputFileCsv(IntegrationPlan* ip, QObject *parent);
+    CreateJiraSPTInputFileCsv(QString html_code, IntegrationPlan* ip, QObject *parent);
     JiraSPInputFileCsv* createJiraSPTInputFileCsv();
 
 public slots:
@@ -25,6 +25,7 @@ public slots:
 private:
     IntegrationPlan* m_ip;
     QString m_separator;
+    QString m_html_code;
 
     void putHeaderCsv(QStringList *list);
     void putSTPUsingIntegrationPlan(QStringList *list);

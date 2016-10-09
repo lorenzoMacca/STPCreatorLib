@@ -45,7 +45,7 @@ bool TEST_002::executeTest()
         QTextStream stream( &file );
         stream << htmlOut << endl;
     }*/
-    CreateJiraSPTInputFileCsv *create_jira_input_file = new CreateJiraSPTInputFileCsv(stpHon02Rel,this);
+    CreateJiraSPTInputFileCsv *create_jira_input_file = new CreateJiraSPTInputFileCsv(htmlOut, stpHon02Rel,this);
     JiraSPInputFileCsv *input_file = create_jira_input_file->createJiraSPTInputFileCsv();
     input_file->save(data.settingData()->sp_input_file_name());
 
