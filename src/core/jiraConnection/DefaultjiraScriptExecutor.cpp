@@ -8,6 +8,8 @@ DefaultJiraScriptExecutor::DefaultJiraScriptExecutor(Data* data, QObject *parent
 
 bool DefaultJiraScriptExecutor::createSPTicket()
 {
+    emit started();
+
     //get integration plan from the global data
     IntegrationPlan *integrationPlan = this->m_data->integrationPlan();
 
@@ -28,7 +30,7 @@ bool DefaultJiraScriptExecutor::createSPTicket()
     if(integrationPlan->stp_type() == IntegrationPlan::RELEASE)
     {
         //create the STP
-        this->createSTP(input_file, 1);
+        this->createSTP(integrationPlan->cw(), 1);
 
         //create morning/follow-up ticket
         this->createMorningFollowupTicket();
@@ -37,15 +39,28 @@ bool DefaultJiraScriptExecutor::createSPTicket()
         this->linkMfTicketToStp();
     }else
     {
-        this->createSTP(input_file, 0);
+        this->createSTP(integrationPlan->cw(), 0);
     }
 
-    return false;
+    emit finished();
+    return true;
 }
 
-void DefaultJiraScriptExecutor::createSTP(JiraSPInputFileCsv *inputFileCsv, int release)
+void DefaultJiraScriptExecutor::createSTP(QString cw, int release)
 {
+    QDir jira_script_folder = this->m_data->settingData()->create_stp_jira_path();
+    if(!jira_script_folder.exists())
+    {
+        emit jiraScriptFolderNotFound();
+        return;
+    }
 
+    QProcess *process = new QProcess(this);
+    process->setObjectName("Creating STP ticket");
+
+    QStringList arguments;
+    arguments << cw << "configFile/STPs.csv" << QString::number(release);
+    process->start("JiraScriptPerl/starterSTP_for_Lib.cmd", arguments);
 }
 
 void DefaultJiraScriptExecutor::createMorningFollowupTicket()
