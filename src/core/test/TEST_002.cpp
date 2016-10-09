@@ -25,6 +25,15 @@ bool TEST_002::executeTest()
     hon02.addComponent(tunutil1);
     IntegrationPlan *stpHon02Rel = new IntegrationPlan("HON02 Release CW", QDate(2016,9,26), QDate(2016,9,20), "54", QDate(2016,9,21), 0);
     stpHon02Rel->addBuild(hon02);
+    QString securityLevel("gl005_jasmin");
+    stpHon02Rel->setSecurityLevel(securityLevel);
+    QString assignee("lorenzo");
+    stpHon02Rel->setAssignees(assignee);
+    QString pic("Laghigna");
+    stpHon02Rel->setPic(pic);
+    QString sub_project("HON02");
+    stpHon02Rel->setSubProject(sub_project);
+
 
     Data data(stpHon02Rel, this);
     QString htmlOut = data.getHTMLCode();
