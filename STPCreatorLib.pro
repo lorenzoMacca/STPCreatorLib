@@ -33,7 +33,8 @@ SOURCES += \
     src/core/test/TEST_004.cpp \
     src/core/jiraConnection/JiraSPInputFileCsv.cpp \
     src/core/test/TEST_005.cpp \
-    src/core/jiraConnection/CreateJiraSPTInputFileCsv.cpp
+    src/core/jiraConnection/CreateJiraSPTInputFileCsv.cpp \
+    src/core/jiraConnection/DefaultjiraScriptExecutor.cpp
 
 HEADERS += \
     inc/traininglib.h \
@@ -58,7 +59,9 @@ HEADERS += \
     src/core/test/TEST_004.h \
     src/core/jiraConnection/JiraSPInputFileCsv.h \
     src/core/test/TEST_005.h \
-    src/core/jiraConnection/CreateJiraSPTInputFileCsv.h
+    src/core/jiraConnection/CreateJiraSPTInputFileCsv.h \
+    src/core/jiraConnection/JiraScriptExecutor.h \
+    src/core/jiraConnection/DefaultjiraScriptExecutor.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
