@@ -28,15 +28,17 @@ bool TEST_002::executeTest()
 
     Data data(stpHon02Rel, this);
     QString htmlOut = data.getHTMLCode();
-    qDebug() << htmlOut;
+    /*qDebug() << htmlOut;
 
     QFile file( this->m_filename );
     if ( file.open(QIODevice::ReadWrite) )
     {
         QTextStream stream( &file );
         stream << htmlOut << endl;
-    }
-
+    }*/
+    CreateJiraSPTInputFileCsv *create_jira_input_file = new CreateJiraSPTInputFileCsv(stpHon02Rel,this);
+    JiraSPInputFileCsv *input_file = create_jira_input_file->createJiraSPTInputFileCsv();
+    input_file->save(data.settingData()->sp_input_file_name());
 
 
     qDebug() << "TEST_002.001 - instatiatind Data class";

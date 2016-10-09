@@ -5,7 +5,7 @@ SettingData::SettingData(QObject *parent):QObject(parent)
     qDebug() << "Initialize Setting data instance";
     this->m_create_stp_jira_path=QDir("jiraScriptPerl");
     this->m_create_stp_jira_name=QFileInfo("jiraScriptPerl/starter.cmd");
-    this->m_sp_input_file_name=QFileInfo("configFile/STPs.csv");
+    this->m_sp_input_file_name= "JiraScriptPerl/configFile/STPs.csv";
     this->m_sp_input_file_destination=QDir("jiraScriptPerl");
     this->m_file_listed_name=QFileInfo("config/configFile.xml");
     this->m_cw = "";
@@ -24,7 +24,7 @@ const QFileInfo& SettingData::create_stp_jira_name()const
     return this->m_create_stp_jira_name;
 }
 
-const QFileInfo& SettingData::sp_input_file_name()const
+const QString& SettingData::sp_input_file_name()const
 {
     return this->m_sp_input_file_name;
 }

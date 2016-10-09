@@ -21,7 +21,7 @@ public:
     SettingData(QObject *parent);
     const QDir& create_stp_jira_path()const;
     const QFileInfo& create_stp_jira_name()const;
-    const QFileInfo& sp_input_file_name()const;
+    const QString& sp_input_file_name()const;
     const QDir& sp_input_file_destination()const;
     const QFileInfo& file_listed_name()const;
     const QList<ComponentSoftware>& getComponentsSoftware()const;
@@ -37,7 +37,7 @@ public slots:
 private:
     QDir      m_create_stp_jira_path;
     QFileInfo m_create_stp_jira_name;
-    QFileInfo m_sp_input_file_name;
+    QString   m_sp_input_file_name;
     QDir      m_sp_input_file_destination;
     QFileInfo m_file_listed_name;
     QDomDocument m_config_file;

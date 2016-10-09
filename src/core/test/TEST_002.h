@@ -10,6 +10,8 @@
 #include "../entities/build.h"
 #include "../entities/integration_plan.h"
 #include "../util/util.h"
+#include "../jiraConnection/CreateJiraSPTInputFileCsv.h"
+#include "../jiraConnection/JiraSPInputFileCsv.h"
 
 class TEST_002 : public TEST{
     
