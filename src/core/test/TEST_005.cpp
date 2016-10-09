@@ -11,13 +11,10 @@ bool TEST_005::executeTest()
 {
 
     qDebug() << "###########Running: " + this->m_name + " ###########";
-
-    Data *data = new Data(0,this);
     QStringList *list = new QStringList();
     *list << "A" << "B" << "B";
-    JiraSPInputFileCsv *jira_input_file = new JiraSPInputFileCsv(data,list, this);
-    jira_input_file->save();
-    qDebug() << jira_input_file->name()->fileName();
+    JiraSPInputFileCsv *jira_input_file = new JiraSPInputFileCsv(list, this);
+    jira_input_file->save("JiraScriptPerl/configFile/STPs.csv");
     delete list;
     qDebug() << "###########Ending : " + this->m_name + " ###########";
     return true;

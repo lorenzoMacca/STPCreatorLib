@@ -15,18 +15,13 @@ class JiraSPInputFileCsv : public QObject{
     Q_OBJECT
     
 public:
-    JiraSPInputFileCsv(Data *data, QStringList *list, QObject *parent);
-	const QFile* name()const;
-    const QDir& locationinJiraEnv()const;
+    JiraSPInputFileCsv(QStringList *list, QObject *parent);
 	const QStringList* rowsList()const;
-	const QString toString()const;
-    void save();//should generate events
+    void save(QString path);//should generate events
 
 public slots:
 
 private:
-    QFile* m_name;
-    QDir m_locationinJiraEnv;
     QStringList* m_rowsList;
 
 signals:
