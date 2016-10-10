@@ -29,8 +29,7 @@ private:
     Data * m_data;
 
     void createSTP(QString cw, int release);
-    void createMorningFollowupTicket();
-    void linkMfTicketToStp();
+    void createMorningFollowupTicket(QString cw);
 
 signals:
     void integrationPlanNotVerified();

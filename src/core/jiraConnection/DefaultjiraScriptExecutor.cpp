@@ -33,10 +33,8 @@ bool DefaultJiraScriptExecutor::createSPTicket()
         this->createSTP(integrationPlan->cw(), 1);
 
         //create morning/follow-up ticket
-        this->createMorningFollowupTicket();
+        this->createMorningFollowupTicket(integrationPlan->cw());
 
-        //link the morning/follow-up ticket to the STP already created
-        this->linkMfTicketToStp();
     }else
     {
         this->createSTP(integrationPlan->cw(), 0);
@@ -63,14 +61,21 @@ void DefaultJiraScriptExecutor::createSTP(QString cw, int release)
     process->start("JiraScriptPerl/starterSTP_for_Lib.cmd", arguments);
 }
 
-void DefaultJiraScriptExecutor::createMorningFollowupTicket()
+void DefaultJiraScriptExecutor::createMorningFollowupTicket(QString cw)
 {
+    QDir jira_script_folder = this->m_data->settingData()->create_stp_jira_path();
+    if(!jira_script_folder.exists())
+    {
+        emit jiraScriptFolderNotFound();
+        return;
+    }
 
-}
+    QProcess *process = new QProcess(this);
+    process->setObjectName("Creating Task ticket");
 
-void DefaultJiraScriptExecutor::linkMfTicketToStp()
-{
-
+    QStringList arguments;
+    arguments << cw;
+    process->start("JiraScriptPerl/starterTaskTicket_for_Lib.cmd", arguments);
 }
 
 
