@@ -271,9 +271,6 @@ bool IntegrationPlan::checkIntegrationPlan()const
     if( this->m_start_date.isNull() ){
         return false;
     }
-    if( !this->m_noMerge || this->m_merge_date.isNull()){
-        return false;
-    }
     if( this->m_cw == "" ){
         return false;
     }
