@@ -59,7 +59,7 @@ void DefaultJiraScriptExecutor::createSTP(QString cw, int release)
     process->setObjectName("Creating STP ticket");
 
     QStringList arguments;
-    arguments << cw << "configFile/STPs.csv" << QString::number(release);
+    arguments << "STPs.csv" << cw << QString::number(release);
     process->start("JiraScriptPerl/starterSTP_for_Lib.cmd", arguments);
 }
 

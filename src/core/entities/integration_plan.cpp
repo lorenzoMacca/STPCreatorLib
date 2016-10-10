@@ -292,18 +292,6 @@ bool IntegrationPlan::checkIntegrationPlan()const
     if( this->m_sub_project == "" ){
         return false;
     }
-    if( this->m_label == "" ){
-        return false;
-    }
-    if( this->m_priority == "" ){
-        return false;
-    }
-    if( this->m_stp_type == "" ){
-        return false;
-    }
-    if( this->m_html_code == "" ){
-        return false;
-    }
 
     return true;
 }
