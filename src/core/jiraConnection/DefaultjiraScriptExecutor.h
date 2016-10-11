@@ -24,18 +24,20 @@ public:
     const static int ERROR_INPUT_FILE = 3;
 
 public slots:
+    void createMorningFollowupTicket();
 
 private:
     Data * m_data;
 
     void createSTP(QString cw, int release);
-    void createMorningFollowupTicket(QString cw);
+
 
 signals:
     void integrationPlanNotVerified();
     void started();
     void finished();
     void jiraScriptFolderNotFound();
+    void STPCreated();
 
 };
 

@@ -27,18 +27,9 @@ bool DefaultJiraScriptExecutor::createSPTicket()
     //save the input file
     input_file->save(this->m_data->settingData()->sp_input_file_name());
 
-    if(integrationPlan->stp_type() == IntegrationPlan::RELEASE)
-    {
-        //create the STP
-        this->createSTP(integrationPlan->cw(), 1);
 
-        //create morning/follow-up ticket
-        this->createMorningFollowupTicket(integrationPlan->cw());
-
-    }else
-    {
-        this->createSTP(integrationPlan->cw(), 0);
-    }
+    //create the STP
+    this->createSTP(integrationPlan->cw(), 1);
 
     emit finished();
     return true;
@@ -54,28 +45,37 @@ void DefaultJiraScriptExecutor::createSTP(QString cw, int release)
     }
 
     QProcess *process = new QProcess(this);
+
+    connect(this, SIGNAL(STPCreated()),
+            this, SLOT(createMorningFollowupTicket()));
+
     process->setObjectName("Creating STP ticket");
 
     QStringList arguments;
     arguments << "STPs.csv" << cw << QString::number(release);
     process->start("JiraScriptPerl/starterSTP_for_Lib.cmd", arguments);
+    emit STPCreated();
 }
 
-void DefaultJiraScriptExecutor::createMorningFollowupTicket(QString cw)
+void DefaultJiraScriptExecutor::createMorningFollowupTicket()
 {
-    QDir jira_script_folder = this->m_data->settingData()->create_stp_jira_path();
-    if(!jira_script_folder.exists())
+    if(this->m_data->integrationPlan()->stp_type() == IntegrationPlan::RELEASE)
     {
-        emit jiraScriptFolderNotFound();
-        return;
+        QString cw = this->m_data->integrationPlan()->cw();
+        QDir jira_script_folder = this->m_data->settingData()->create_stp_jira_path();
+        if(!jira_script_folder.exists())
+        {
+            emit jiraScriptFolderNotFound();
+            return;
+        }
+
+        QProcess *process = new QProcess(this);
+        process->setObjectName("Creating Task ticket");
+
+        QStringList arguments;
+        arguments << cw;
+        process->start("JiraScriptPerl/starterTaskTicket_for_Lib.cmd", arguments);
     }
-
-    QProcess *process = new QProcess(this);
-    process->setObjectName("Creating Task ticket");
-
-    QStringList arguments;
-    arguments << cw;
-    process->start("JiraScriptPerl/starterTaskTicket_for_Lib.cmd", arguments);
 }
 
 
