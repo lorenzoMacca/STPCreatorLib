@@ -33,6 +33,7 @@ bool TEST_002::executeTest()
     stpHon02Rel->setPic(pic);
     QString sub_project("HON02");
     stpHon02Rel->setSubProject(sub_project);
+	stpHon02Rel->setStpType(QString(IntegrationPlan::RELEASE));
 
 
     Data data(stpHon02Rel, this);

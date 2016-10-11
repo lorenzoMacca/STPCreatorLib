@@ -51,7 +51,7 @@ public:
     void setSubProject(QString& s);
     void setLabel(QString& s);
     void setPriority(QString& s);
-    void setStpType(QString& s);
+    void setStpType(QString s);
     void setHtmlCode(QString& s);
 
     int compareDate(QDate d1, QDate d2); /*return -1 for d1 ; 1 for d2 ; 0 d1==d2*/

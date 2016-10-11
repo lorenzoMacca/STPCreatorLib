@@ -153,7 +153,7 @@ void IntegrationPlan::setPriority(QString& s)
     this->m_priority = s;
 }
 
-void IntegrationPlan::setStpType(QString& s)
+void IntegrationPlan::setStpType(QString s)
 {
     this->m_stp_type = s;
 }
