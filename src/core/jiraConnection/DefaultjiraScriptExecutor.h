@@ -24,12 +24,12 @@ public:
     const static int ERROR_INPUT_FILE = 3;
 
 public slots:
-    void createMorningFollowupTicket();
 
 private:
     Data * m_data;
-
+	QProcess *processSTP;
     void createSTP(QString cw, int release);
+	void createSTPDevDrop(QString cw, int release);
 
 
 signals:

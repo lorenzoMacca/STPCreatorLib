@@ -202,7 +202,7 @@ const QDate IntegrationPlan::getRealDueDate()
     QListIterator<Build> buildsIter(this->m_builds);
     while(buildsIter.hasNext())
     {
-        QDate currentDate = buildsIter.next().start_date();
+        QDate currentDate = buildsIter.next().delivery_day();
         if(!isInit)
         {
             dateOfTheLastBuild = currentDate;
