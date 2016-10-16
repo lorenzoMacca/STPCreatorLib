@@ -39,20 +39,20 @@ public:
     const QString& stp_type()const;
     const QString& html_code()const;
     //set
-    void setSummary(QString& s);
-    void setDueDate(QDate& d);
-    void setStartDate(QDate& d);
-    void setCw(QString& s);
-    void setMergeDate(QDate& d);
+    void setSummary(QString s);
+    void setDueDate(QDate d);
+    void setStartDate(QDate d);
+    void setCw(QString s);
+    void setMergeDate(QDate d);
     void setNoMerge(bool b);
-    void setSecurityLevel(QString& s);
-    void setAssignees(QString& s);
-    void setPic(QString& s);
-    void setSubProject(QString& s);
-    void setLabel(QString& s);
-    void setPriority(QString& s);
+    void setSecurityLevel(QString s);
+    void setAssignees(QString s);
+    void setPic(QString s);
+    void setSubProject(QString s);
+    void setLabel(QString s);
+    void setPriority(QString s);
     void setStpType(QString s);
-    void setHtmlCode(QString& s);
+    void setHtmlCode(QString s);
 
     int compareDate(QDate d1, QDate d2); /*return -1 for d1 ; 1 for d2 ; 0 d1==d2*/
     bool addBuild(Build &newBuild);
