@@ -17,6 +17,7 @@ class Data : public QObject{
     Q_OBJECT
 
 public:
+    Data(QObject *parent);
     Data(IntegrationPlan *integration_plan, QObject *parent);
     void initSettingData();
     SettingData* settingData();

@@ -7,6 +7,13 @@ Data::Data(IntegrationPlan *integration_plan, QObject *parent):QObject(parent)
     this->initSettingData();
 }
 
+Data::Data(QObject *parent):QObject(parent)
+{
+    this->m_settingData_ptr = 0;
+    this->m_integration_plan_ptr = new IntegrationPlan(this);
+    this->initSettingData();
+}
+
 void Data::initSettingData()
 {
     this->m_settingData_ptr = new SettingData(this);
