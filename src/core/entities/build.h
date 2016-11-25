@@ -31,6 +31,7 @@ public:
     const QString& description()const;
     bool noMerge()const;
     const QList<ComponentSoftware>& components()const;
+    QList<ComponentSoftware>& componentsMod();
     Build &operator=(const Build &other);
     void setName(QString &name);
     void setStartDate(QDate &start_date);

@@ -29,6 +29,7 @@ public:
     const QString& cw()const;
     const QDate& merge_date()const;
     const QList<Build>& builds()const;
+    QList<Build>& buildsMod();
     bool noMerge()const;
     const QString& security_level()const;
     const QString& assignees()const;

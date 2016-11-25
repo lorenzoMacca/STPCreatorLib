@@ -48,6 +48,11 @@ const QList<Build>& IntegrationPlan::builds()const
     return this->m_builds;
 }
 
+QList<Build>& IntegrationPlan::buildsMod()
+{
+    return this->m_builds;
+}
+
 bool IntegrationPlan::noMerge()const
 {
     return this->m_noMerge;

@@ -87,6 +87,11 @@ const QList<ComponentSoftware>& Build::components()const
     return this->m_components;
 }
 
+QList<ComponentSoftware>& Build::componentsMod()
+{
+    return this->m_components;
+}
+
 void Build::setName(QString &name)
 {
     this->m_name = name;
