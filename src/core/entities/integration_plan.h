@@ -62,6 +62,7 @@ public:
     const QDate getRealDueDate();   /*giorno dell'ultima attività*/
     const QString toString();
     bool checkIntegrationPlan()const;
+    void clearIntegrationPLan();
     //todo
 
 

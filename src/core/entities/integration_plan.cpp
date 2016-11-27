@@ -5,12 +5,13 @@ const QString IntegrationPlan::DEV_DROP="dev_drop";
 
 IntegrationPlan::IntegrationPlan(QObject *parent):QObject(parent)
 {
-
+    this->clearIntegrationPLan();
 }
 
 IntegrationPlan::IntegrationPlan(QString summary, QDate due_date, QDate start_date, QString cw, QDate merge_date, QObject *parent)
 :QObject(parent)
 {
+    this->clearIntegrationPLan();
     this->m_summary = summary;
     this->m_due_date = due_date;
     this->m_start_date = start_date;
@@ -296,4 +297,21 @@ bool IntegrationPlan::checkIntegrationPlan()const
     }
 
     return true;
+}
+
+void IntegrationPlan::clearIntegrationPLan()
+{
+    this->m_summary = "";
+    this->m_due_date = QDate::currentDate();
+    this->m_start_date = QDate::currentDate();
+    this->m_cw = QString::number(QDate::currentDate().weekNumber());
+    this->m_merge_date = QDate::currentDate();
+    this->m_noMerge = false;
+    this->m_security_level = "";
+    this->m_assignees = "";
+    this->m_pic = "";
+    this->m_sub_project = "";
+    this->m_label = "";
+    this->m_priority = "";
+    this->m_stp_type = "";
 }
