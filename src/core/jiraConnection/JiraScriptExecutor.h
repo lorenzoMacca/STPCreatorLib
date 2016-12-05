@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QString>
+#include <QProcess>
 
 class JiraScriptExecutor : public QObject{
 
@@ -10,6 +11,7 @@ class JiraScriptExecutor : public QObject{
 
 public:
     virtual bool createSPTicket()=0;
+    virtual const QProcess* getProcessSTP()=0;
 
 };
 
