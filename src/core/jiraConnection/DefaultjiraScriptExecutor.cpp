@@ -76,3 +76,8 @@ void DefaultJiraScriptExecutor::createSTPDevDrop(QString cw, int release)
     this->processSTP->start("JiraScriptPerl/starterSTP_dev_drop.cmd", arguments);
     emit STPCreated();
 }
+
+const QProcess* DefaultJiraScriptExecutor::getProcessSTP()const
+{
+    return this->processSTP;
+}

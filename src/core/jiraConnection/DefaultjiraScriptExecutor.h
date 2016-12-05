@@ -22,6 +22,7 @@ public:
     const static int ERROR_FOLDER_NOT_FOUND = 1;
     const static int ERROR_SCRIPT_NOT_FOUND = 2;
     const static int ERROR_INPUT_FILE = 3;
+    const QProcess* getProcessSTP()const;
 
 public slots:
 
