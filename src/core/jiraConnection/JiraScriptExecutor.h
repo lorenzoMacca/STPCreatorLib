@@ -11,7 +11,7 @@ class JiraScriptExecutor : public QObject{
 
 public:
     virtual bool createSPTicket()=0;
-    virtual const QProcess* getProcessSTP()=0;
+    virtual QProcess* getProcessSTP()=0;
 
 };
 

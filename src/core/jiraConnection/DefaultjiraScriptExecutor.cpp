@@ -77,7 +77,7 @@ void DefaultJiraScriptExecutor::createSTPDevDrop(QString cw, int release)
     emit STPCreated();
 }
 
-const QProcess* DefaultJiraScriptExecutor::getProcessSTP()
+QProcess* DefaultJiraScriptExecutor::getProcessSTP()
 {
     return this->processSTP;
 }
